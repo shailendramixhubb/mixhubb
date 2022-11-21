@@ -613,7 +613,12 @@ public class Action extends BaseClass {
 	    }catch(Exception e) {
 	    }
 	}
-	
+	public static void implicitWait(WebDriver driver, int timeOut) {
+		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+	}
+	public static void pageLoadTimeOut(WebDriver driver, int timeOut) {
+		driver.manage().timeouts().pageLoadTimeout(timeOut, TimeUnit.SECONDS);
+	}
 	public void explicitwait(WebDriver driver, Duration timeout,WebElement element) {
 		WebDriverWait wait = new WebDriverWait(driver, timeout);
 		wait.until(ExpectedConditions.visibilityOf(element));

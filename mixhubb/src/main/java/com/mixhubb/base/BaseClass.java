@@ -12,6 +12,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
+import com.mixhubb.actiondriver.Action;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseClass {
@@ -54,6 +56,10 @@ public class BaseClass {
 		if(browsername.contains("IE")) {
 			driver= new InternetExplorerDriver();
 		}
+	Action.implicitWait(driver,10);
+	Action.pageLoadTimeOut(driver,30);
+	
+	driver.get(prop.getProperty("url"));
 	}
-
+	
 }
