@@ -5,6 +5,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
 
 import com.mixhubb.base.BaseClass;
 
@@ -120,5 +121,114 @@ public class Action extends BaseClass {
 		return flag;
 	}
 	
+	public static boolean selectBySendkeys(WebElement ele, String value) throws Exception{
+	boolean flag=false;
+	try {
+		ele.sendKeys(value);
+		flag=true;
+		return true;
+	}
+	catch(Exception e) {
+		return false;
+	}
+	finally {
+		if(flag)
+			{
+			System.out.println("Select value from the drop down");
+			}
+		else {
+			System.out.println("Not Select value from the drop down");
+		}
+	}
+	
+		
+	}
+	public static boolean selectByIndex(WebElement ele,int Index)
+	{
+		boolean flag=false;
+		try {
+			Select s= new Select(ele);
+			s.selectByIndex(Index);
+			flag =true;
+			return true;
+		}
+		catch(Exception e){
+			return false;
+			
+		}
+		finally {
+			if(flag) {
+				System.out.println("option select by Index");
+			}
+			else {
+				System.out.println("Option not select by index");
+			}
+		}
+	}
+	public static boolean selectByValue(WebElement ele,String value)
+	{
+		boolean flag=false;
+		try {
+			Select s= new Select(ele);
+			s.selectByValue(value);
+			flag =true;
+			return true;
+		}
+		catch(Exception e){
+			return false;
+			
+		}
+		finally {
+			if(flag) {
+				System.out.println("option select by Value");
+			}
+			else {
+				System.out.println("Option not select by Value");
+			}
+		}
+	}
+	public static boolean selectByVisibletext(WebElement ele,String visibletext)
+	{
+		boolean flag=false;
+		try {
+			Select s= new Select(ele);
+			s.deselectByVisibleText(visibletext);
+			flag =true;
+			return true;
+		}
+		catch(Exception e){
+			return false;
+			
+		}
+		finally {
+			if(flag) {
+				System.out.println("option select by visibletext");
+			}
+			else {
+				System.out.println("Option not select by visibletext");
+			}
+		}
+	}
+	public static boolean JSclick(WebDriver driver, WebElement ele) {
+		boolean flag=false;
+		try {
+			JavascriptExecutor je = (JavascriptExecutor)driver;
+			je.executeScript("arguments[0].click();", ele);
+			flag=true;
+		}
+		catch(Exception e) {
+			throw e;
+			
+		}
+		finally {
+			if(flag) {
+				System.out.println("Click Action is performed");
+			}
+			else if(!flag){
+				System.out.println("Click Action is Not performed");
+			}
+		}
+		return flag;
+	}
 
 }
